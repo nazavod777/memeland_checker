@@ -144,6 +144,8 @@ async def start_checker(private_key: str,
                         proxy: str | None = None) -> None:
     async with loader.semaphore:
         try:
+            await change_proxy_by_url(private_key=private_key)
+
             await Checker(private_key=private_key,
                           proxy=proxy).start_checker()
 
